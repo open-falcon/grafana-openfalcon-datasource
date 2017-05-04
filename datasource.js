@@ -145,36 +145,12 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
         };
         this.translateTime = function (date, roundUp) {
             if (lodash_1.default.isString(date)) {
-                if (date === 'now') {
-                    return Math.ceil((new Date).getTime()/1000);
-                }
-                else if(date.match(/(\d+)h/).length != 0){
-                    var current = Math.ceil((new Date).getTime()/1000);
-                    return current - (+date.match(/(\d+)h/)[1] * 60 * 60);
-                }
-                else if (date.indexOf('now-') >= 0 && date.indexOf('/') === -1) {
-                    date = date.substring(3);
-                    date = date.replace('m', 'min');
-                    date = date.replace('M', 'mon');
-                    return date;
-                }
-                date = dateMath.parse(date, roundUp);
+                date = dateMath.parse(date, roundUp)._d/1000;
             }
-            // openfalcon' s from filter is exclusive
-            // here we step back one minute in order
-            // to guarantee that we get all the data that
-            // exists for the specified range
-            if (roundUp) {
-                if (date.get('s')) {
-                    date.add(1, 'm');
-                }
+            else {
+                date = date/1000;
             }
-            else if (roundUp === false) {
-                if (date.get('s')) {
-                    date.subtract(1, 'm');
-                }
-            }
-            return date.unix();
+            return Math.ceil(date);
         };
         this.metricFindQuery = function (query) {
             var interpolated;
