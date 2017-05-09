@@ -98,15 +98,38 @@ System.register(['./lexer'], function(exports_1) {
                         type: 'metric',
                         segments: []
                     };
-                    node.segments.push(this.metricSegment());
+
+                    var segments = new Array;
+                    segments.push(this.metricSegment());
                     while (this.match('.')) {
                         this.consumeToken();
                         var segment = this.metricSegment();
                         if (!segment) {
                             this.errorMark('Expected metric identifier');
                         }
-                        node.segments.push(segment);
+                        segments.push(segment);
                     }
+
+                    var i = 0;
+                    var str = "";
+                    while (i < segments.length) {
+                        str += segments[i++].value;
+                        if (/(\d+)\.(\d+)\.(\d+)\.(\d+)/.test(str)) {
+                            break;
+                        } else {
+                            str += ".";
+                        }
+                    }
+
+                    node.segments.push({
+                        type: 'segment',
+                        value: str
+                    });
+
+                    for (; i < segments.length; i++) {
+                        node.segments.push(segments[i]);
+                    }
+
                     return node;
                 },
                 functionCall: function () {
