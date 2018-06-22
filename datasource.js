@@ -5,9 +5,9 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
     function FixTargets(targets) {
       return _.map(targets, function(obj){
         if( obj.target && obj.target != "" && obj.target.match(/\./) ){
-            obj.target = obj.target.replace(/\./g, "#");
+            // obj.target = obj.target.replace(/\./g, "#");
             //fix ip back to the right foramt ex. 10#10#10#10 -> 10.10.10.10
-            obj.target = obj.target.replace(/(\d+)#(\d+)#(\d+)#(\d+)/g,"$1.$2.$3.$4");
+            // obj.target = obj.target.replace(/(\d+)#(\d+)#(\d+)#(\d+)/g,"$1.$2.$3.$4");
         }
         return obj;
       })
@@ -234,7 +234,7 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
                     continue;
                 }
                 targetValue = targets[target.refId];
-                // this will brken upcase metric during query, so I just mark it to solve this kind of porblem. 
+                // this will break upcase metric during query, so I just mark it to solve this kind of porblem.
                 // targetValue = targetValue.replace(regex, nestedSeriesRegexReplacer);
                 targets[target.refId] = targetValue;
                 if (!target.hide) {
