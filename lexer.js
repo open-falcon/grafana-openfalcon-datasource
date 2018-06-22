@@ -18,11 +18,13 @@ System.register(['lodash'], function(exports_1) {
                     var split_list = this.input.split("#");
                     var length = split_list.length;
                     split_list.map(function(entry, index){
-                        list.push({
-                            type: "identifier",
-                            value: entry,
-                            pos: pos + 1
-                        });
+                        if(entry) {
+                            list.push({
+                                type: "identifier",
+                                value: entry,
+                                pos: pos + 1
+                            });
+                        }
                         pos += entry.length;
                         if (index < length - 1) {
                             list.push({
