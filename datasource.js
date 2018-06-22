@@ -234,7 +234,7 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
                     continue;
                 }
                 targetValue = targets[target.refId];
-                // this will brken upcase metric during query, so I just mark it to solve this kind of porblem. 
+                // this will break upcase metric during query, so I just mark it to solve this kind of porblem.
                 // targetValue = targetValue.replace(regex, nestedSeriesRegexReplacer);
                 targets[target.refId] = targetValue;
                 if (!target.hide) {
