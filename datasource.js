@@ -163,7 +163,7 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
             if (interpolated == '*') {
               interpolated = '';
             }
-            return this.doOpenfalconRequest({ method: 'GET', url: '/metrics/find/?query=' + interpolated })
+            return this.doOpenfalconRequest({ method: 'GET', url: '/metrics/find?query=' + interpolated })
                 .then(function (results) {
                 return lodash_1.default.map(results.data, function (metric) {
                     return {
