@@ -46,13 +46,13 @@ System.register(['./add_openfalcon_func', './func_editor', 'lodash', './gfunc', 
                     this.error = null;
                     if (this.target.textEditor) {
                         //fix "." back to "#"
-                        this.target.target = this.target.target.replace(/\./g, "#");
+                        //this.target.target = this.target.target.replace(/\./g, "#");
                         //fix ip back to the right foramt ex. 10#10#10#10 -> 10.10.10.10
-                        this.target.target = this.target.target.replace(/(\d+)#(\d+)#(\d+)#(\d+)/g,"$1.$2.$3.$4");
+                        //this.target.target = this.target.target.replace(/(\d+)#(\d+)#(\d+)#(\d+)/g,"$1.$2.$3.$4");
                         return;
                     }else{
                         //fix "." to "#"
-                        this.target.target =  this.target.target.replace(/#/g, ".");
+                        //this.target.target =  this.target.target.replace(/#/g, ".");
                     }
                     var parser = new parser_1.Parser(this.target.target);
                     var astNode = parser.getAst();

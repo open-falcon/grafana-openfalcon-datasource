@@ -5,6 +5,11 @@ System.register(['./lexer'], function(exports_1) {
         this.lexer = new lexer_1.Lexer(expression);
         this.tokens = this.lexer.tokenize();
         this.index = 0;
+
+        /* console.log("entry:");
+        this.tokens.forEach(function(entry) {
+            console.log(entry);
+        }); */
     }
     exports_1("Parser", Parser);
     return {
@@ -60,14 +65,10 @@ System.register(['./lexer'], function(exports_1) {
                     }
                     if (this.match('identifier') || this.match('number')) {
                         // hack to handle float numbers in metric segments
-                        var parts = this.consumeToken().value.split('.');
-                        if (parts.length === 2) {
-                            this.tokens.splice(this.index, 0, { type: '.' });
-                            this.tokens.splice(this.index + 1, 0, { type: 'number', value: parts[1] });
-                        }
+                        var parts = this.consumeToken().value;
                         return {
                             type: 'segment',
-                            value: parts[0]
+                            value: parts
                         };
                     }
                     if (!this.match('templateStart')) {
@@ -99,7 +100,7 @@ System.register(['./lexer'], function(exports_1) {
                         segments: []
                     };
                     node.segments.push(this.metricSegment());
-                    while (this.match('.')) {
+                    while (this.match('#')) {
                         this.consumeToken();
                         var segment = this.metricSegment();
                         if (!segment) {
@@ -191,8 +192,7 @@ System.register(['./lexer'], function(exports_1) {
                     var currentToken = this.tokens[this.index];
                     var type = currentToken ? currentToken.type : 'end of string';
                     throw {
-                        message: text + " instead found " + type,
-                        pos: currentToken ? currentToken.pos : this.lexer.char
+                        message: text + " instead found " + type
                     };
                 },
                 // returns token value and incre
