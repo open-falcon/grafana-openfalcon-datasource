@@ -4,8 +4,9 @@
 
 # Installation
 
-### Download prebuild version of grafana official site
-[https://grafana.com/grafana/download](https://grafana.com/grafana/download) `Grafana v4.2`
+### Download prebuild version of [grafana official site](https://grafana.com/grafana/download) 
+
+*this datasource now support `Grafana v4.2 ~ Grafana v5.4`*
 
 **or you can install grafana via homebrerw:**
 
