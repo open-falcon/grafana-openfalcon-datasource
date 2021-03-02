@@ -34,3 +34,7 @@ If the installation is successful, Open-Falcon datasource would be shown as foll
 * the backend services is provide by [falcon-plus](https://github.com/open-falcon/falcon-plus/tree/master/modules/api).
 
 ![](img/setup_grafana.png)
+
+## If you are using latest grafana, you will find screenshot as follow:
+![latest grafana](https://user-images.githubusercontent.com/792850/109603549-ebe82780-7b5c-11eb-9429-f8a1210035de.png)
+
